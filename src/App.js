@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Auth from "./features/auth/Auth";
 import AuthMiddleware from "./features/auth/AuthMiddleware";
+import ProductList from "./features/products/ProductList";
 
 const App = () => {
   return (
@@ -10,7 +11,9 @@ const App = () => {
       <Route path="/" element={<Layout />}>
         <Route path="auth" element={<Auth />} />
         {/* protected routes  */}
-        <Route element={<AuthMiddleware />}></Route>
+        <Route element={<AuthMiddleware />}>
+          <Route index element={<ProductList />} />
+        </Route>
       </Route>
     </Routes>
   );
