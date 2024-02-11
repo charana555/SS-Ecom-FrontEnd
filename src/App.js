@@ -10,10 +10,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="auth" element={<Auth />} />
+        <Route index element={<ProductList />} />
         {/* protected routes  */}
-        <Route element={<AuthMiddleware />}>
-          <Route index element={<ProductList />} />
-        </Route>
+        <Route element={<AuthMiddleware />}></Route>
       </Route>
     </Routes>
   );

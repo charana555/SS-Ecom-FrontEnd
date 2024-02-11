@@ -1,16 +1,25 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCredentials } from "./authSlice";
 
 import { selectCurrentToken } from "./authSlice";
 
 const AuthMiddleware = () => {
+  const dispatch = useDispatch();
   let token = useSelector(selectCurrentToken);
 
   if (!token) {
     const localCheck = localStorage.getItem("ecommerceuser");
+
     if (localCheck) {
       token = localCheck;
+      dispatch(
+        setCredentials({
+          user: null,
+          token: localCheck,
+        })
+      );
     }
   }
   const location = useLocation();

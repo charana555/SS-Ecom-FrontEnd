@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 const Layout = () => {
   return (
-    <main>
+    <main className="bg-gray-50">
       <Navbar />
       <Outlet />
     </main>

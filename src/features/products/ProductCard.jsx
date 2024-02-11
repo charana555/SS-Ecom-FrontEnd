@@ -1,8 +1,12 @@
 import React from "react";
 
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { selectCurrentToken } from "../auth/authSlice";
 
 const ProductCard = (data) => {
+  let token = useSelector(selectCurrentToken);
+
   return (
     <div className="border border-gray-500 w-[270px] rounded-lg p-3 bg-white">
       <div className="relative w-full h-[180px] max-h-[180px] object-cover border border-gray-300 p-1">
@@ -30,9 +34,11 @@ const ProductCard = (data) => {
             </p>
           </div>
 
-          <div className="cursor-pointer text-orange-600 hover:bg-orange-50 hover:text-orange-600  hover:scale-[1.2] duration-200 ease-in-out border-2 border-transparent rounded-full">
-            <MdOutlineAddShoppingCart className="m-2 text-xl text-inherit" />
-          </div>
+          {token && (
+            <div className="cursor-pointer text-orange-600 hover:bg-orange-50 hover:text-orange-600  hover:scale-[1.2] duration-200 ease-in-out border-2 border-transparent rounded-full">
+              <MdOutlineAddShoppingCart className="m-2 text-xl text-inherit" />
+            </div>
+          )}
         </div>
       </div>
     </div>
