@@ -10,7 +10,6 @@ const ProductList = () => {
     isLoading,
     isSuccess,
     isError,
-    error,
   } = useGetProductsQuery();
 
   let content;
@@ -19,7 +18,7 @@ const ProductList = () => {
     content = <Loading />;
   } else if (isSuccess) {
     content = (
-      <section className="m-16  grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 ">
+      <section className="m-16 mt-24 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 ">
         {products?.proudctsList?.map((item, id) => (
           <ProductCard
             key={id}

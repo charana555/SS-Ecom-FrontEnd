@@ -11,10 +11,12 @@ const authSlice = createSlice({
       const { email, token } = action.payload;
       state.email = email;
       state.token = token;
+      localStorage.setItem("ecommerceuser", state.token);
     },
     logOut: (state) => {
       state.email = null;
       state.token = null;
+      localStorage.clear();
     },
   },
 });

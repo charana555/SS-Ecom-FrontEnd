@@ -5,7 +5,14 @@ import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./authSlice";
 
 const AuthMiddleware = () => {
-  const token = useSelector(selectCurrentToken);
+  let token = useSelector(selectCurrentToken);
+
+  if (!token) {
+    const localCheck = localStorage.getItem("ecommerceuser");
+    if (localCheck) {
+      token = localCheck;
+    }
+  }
   const location = useLocation();
 
   return token ? (
